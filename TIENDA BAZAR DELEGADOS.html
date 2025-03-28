@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tienda Bazar</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <h1>Tienda Bazar de Delegados</h1>
+    
+    <div class="contenedor-tienda">
+        <div class="producto">
+    <p>Gaseosa - $2000</p>
+    <button onclick="agregarAlCarrito('Gaseosa', 2000)">Agregar</button>
+    <span id="contador-Gaseosa"><p>0</span> <!-- Aquí se mostrará la cantidad --></p>
+</div>
+
+
+        <div class="producto">
+            <p>Jugo - $2000</p>
+            <button onclick="agregarAlCarrito('Jugo', 2000)">Agregar</button>
+	    <span id="contador-Jugo">0</span>
+            <span class="confirmacion"></span>
+        </div>
+
+        <div class="producto">
+            <p>Agua - $1000</p>
+            <button onclick="agregarAlCarrito('Agua', 1000)">Agregar</button>
+	    <span id="contador-Agua">0</span>            
+<span class="confirmacion"></span>
+        </div>
+
+        <div class="producto">
+            <p>Empanada - $2000</p>
+            <button onclick="agregarAlCarrito('Empanada', 2000)">Agregar</button>
+	    <span id="contador-Empanada">0</span>
+            <span class="confirmacion"></span>
+        </div>
+
+        <div class="producto">
+            <p>Hamburguesa - $6000</p>
+            <button onclick="agregarAlCarrito('Hamburguesa', 6000)">Agregar</button>
+	    <span id="contador-Hamburguesa">0</span>
+            <span class="confirmacion"></span>
+        </div>
+
+        <div class="producto">
+            <p>Choriperro - $6000</p>
+            <button onclick="agregarAlCarrito('Choriperro', 6000)">Agregar</button>
+	    <span id="contador-Choriperro">0</span>
+            <span class="confirmacion"></span>
+        </div>
+
+        <div class="producto">
+            <p>Sandwich de pollo o carne - $6000</p>
+            <button onclick="agregarAlCarrito('Sandwich de Pollo o Carne', 6000)">Agregar</button>
+	    <span id="contador-Sandwich de Pollo o Carne">0</span>
+            <span class="confirmacion"></span>
+        </div>
+
+        <div class="producto">
+            <p>Sandwich sencillo - $3000</p>
+            <button onclick="agregarAlCarrito('Sandwich Sencillo', 3000)">Agregar</button>
+	    <span id="contador-Sandwich Sencillo">0</span>
+            <span class="confirmacion"></span>
+        </div>
+
+        <div class="producto">
+            <p>Frutos secos - $2000</p>
+            <button onclick="agregarAlCarrito('Frutos Secos', 2000)">Agregar</button>
+	    <span id="contador-Frutos Secos">0</span>
+
+            <span class="confirmacion"></span>
+        </div>
+    </div>
+
+    <br>
+    <button onclick="window.location.href='carritotiendabazar.html'">Ir al Carrito</button>
+
+<script>
+    function agregarAlCarrito(nombre, precio) {
+        let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
+        let productoExistente = carrito.find(item => item.nombre === nombre);
+
+        if (productoExistente) {
+            productoExistente.cantidad += 1;
+        } else {
+            carrito.push({ nombre, precio, cantidad: 1 });
+        }
+
+        localStorage.setItem("carrito", JSON.stringify(carrito));
+
+  // 🛠️ Actualizar el contador en la tienda
+    let contadorElemento = document.getElementById(`contador-${nombre}`);
+    if (contadorElemento) {
+        let cantidadActualizada = carrito.find(item => item.nombre === nombre).cantidad;
+        contadorElemento.innerText = cantidadActualizada;
+        }
+
+        // ✅ Mostrar mensaje de agregado
+        let mensaje = event.target.nextElementSibling;
+        mensaje.innerText = "✓ Agregado";
+        mensaje.style.color = "green";
+
+        setTimeout(() => {
+            mensaje.innerText = "";
+        }, 1500);
+    }
+</script>
+
+
+</body>
+</html>
