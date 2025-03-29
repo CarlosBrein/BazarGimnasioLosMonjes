@@ -101,11 +101,17 @@ th, td {
 }
 
 #mensaje-advertencia {
-    font-size: 16px;
+    background-color: #ffcccc; /* Rojo claro para resaltar */
+    color: #b30000; /* Rojo oscuro */
     font-weight: bold;
-    color: red;
     text-align: center;
+    padding: 10px;
+    border-radius: 5px;
+    margin-top: 15px;
+    font-size: 14px;
+    line-height: 1.5;
 }
+
 
 #btn-imprimir:hover {
     background-color: black;
