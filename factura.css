@@ -66,6 +66,46 @@ th {
     border-radius: 5px;
     font-size: 16px;
 }
+/* Factura Responsive */
+#factura-container {
+    max-width: 100%;
+    overflow-x: auto; /* Permite desplazamiento horizontal en pantallas pequeñas */
+}
+
+#factura {
+    width: 90%;
+    max-width: 600px; /* Limita el tamaño en pantallas grandes */
+    margin: 20px auto;
+    padding: 20px;
+    background: white;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th, td {
+    padding: 10px;
+    border: 1px solid #ddd;
+    text-align: center;
+    font-size: 14px;
+}
+
+#qr-pago {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 10px auto;
+}
+
+#mensaje-advertencia {
+    font-size: 16px;
+    font-weight: bold;
+    color: red;
+    text-align: center;
+}
 
 #btn-imprimir:hover {
     background-color: black;
