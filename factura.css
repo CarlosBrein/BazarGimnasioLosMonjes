@@ -51,11 +51,34 @@ th {
     margin-top: 20px;
 }
 
-#qr-pago {
-    width: 150px;
-    height: 150px;
-    margin: 10px 0;
+#contenedor-pago {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px; /* Espacio entre el QR y el botón */
+    margin-top: 15px;
 }
+
+#qr-pago {
+    width: 120px; /* Ajusta el tamaño del QR */
+    height: auto;
+}
+
+#boton-pago {
+    display: inline-block;
+    text-decoration: none;
+}
+
+#logo-pago {
+    width: 120px; /* Tamaño del botón */
+    height: auto;
+    transition: transform 0.2s ease-in-out;
+}
+
+#logo-pago:hover {
+    transform: scale(1.1); /* Efecto de aumento al pasar el mouse */
+}
+
 
 #btn-imprimir {
     padding: 10px 15px;
