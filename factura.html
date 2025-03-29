@@ -29,7 +29,13 @@
      <strong>Para reclamar su pedido, debe presentar este documento junto con el código QR de confirmación de pago de Nequi, o directamente en el Pago de Nequi incluir los elementos comprados en la parte de Mensaje.</strong>
 </p>
 
-            <img src="qr-pago.jpg" alt="Código QR para pago" id="qr-pago">
+ <div id="contenedor-pago">
+    <img src="qr-pago.jpg" alt="Código QR para pago" id="qr-pago">
+    <a href="https://clientes.nequi.com.co/recargas" target="_blank" id="boton-pago">
+        <img src="pagoPSE.png" alt="Pagar ahora por PSE" id="logo-pago">
+    </a>
+</div>
+
             <p><button onclick="imprimirFactura()" id="btn-imprimir">Imprimir Comprobante</button></p>
             <button onclick="window.location.href='index.html'">Volver a la tienda</button>
         </div>
