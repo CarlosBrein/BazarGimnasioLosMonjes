@@ -60,7 +60,7 @@ th {
 }
 
 #qr-pago {
-    width: 120px; /* Ajusta el tamaño del QR */
+    width: 250px; /* Ajusta el tamaño del QR */
     height: auto;
 }
 
