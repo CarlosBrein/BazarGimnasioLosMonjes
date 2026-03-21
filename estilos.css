@@ -7,6 +7,12 @@ body {
     padding: 0;
 }
 
+background-image: url('tu-imagen.jpg'); 
+    background-size: cover;                /* Ajusta la imagen para cubrir todo el fondo */
+    background-repeat: no-repeat;          /* Evita que la imagen se repita como mosaico */
+    background-position: center;           /* Centra la imagen */
+    background-attachment: fixed;          /* La imagen se queda quieta al bajar la página */
+
 /* Contenedor principal */
 #factura-container, #carrito-container, #tienda-container {
     display: flex;
