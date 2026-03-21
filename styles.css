@@ -1,21 +1,23 @@
 body {
+    
+    background-image: url('tu-imagen.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
     font-family: "Comic Sans MS", "Comic Sans", cursive;
     text-align: center;
     background-color: #fff;
     color: #000;
     margin: 0;
     padding: 0;
-    background-image: url('tu-imagen.jpg'); /* Reemplaza con el nombre o link de tu imagen */
-    background-size: cover;                /* Ajusta la imagen para cubrir todo el fondo */
-    background-repeat: no-repeat;          /* Evita que la imagen se repita como mosaico */
-    background-position: center;           /* Centra la imagen */
-    background-attachment: fixed;          /* La imagen se queda quieta al bajar la página *
-}
+    }
 
 h1 {
     color: red;
     margin-top: 20px;
 }
+
 
 /* Contenedor principal de la tienda */
 .contenedor-tienda {
