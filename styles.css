@@ -13,6 +13,13 @@ h1 {
     margin-top: 20px;
 }
 
+.leoncio {
+    display: block;      /* Hace que se comporte como un bloque (ocupa su propia línea) */
+    margin: 20px auto;   /* Centra la imagen y le da espacio arriba y abajo */
+    max-width: 100%;     /* Evita que la imagen sea más ancha que la pantalla */
+    height: auto;        /* Mantiene la proporción original para que no se vea estirada */
+    
+}
 
 /* Contenedor principal de la tienda */
 .contenedor-tienda {
