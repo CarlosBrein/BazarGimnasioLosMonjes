@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -5,12 +6,35 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>COMPROBANTE</title>
     <link rel="stylesheet" href="factura.css">
+    <style>
+        /* Estilos para que el nombre se vea bien en pantalla */
+        #seccion-nombre { margin: 15px 0; }
+        #input-nombre { padding: 8px; width: 250px; border: 1px solid #ccc; border-radius: 4px; }
+        
+        /* ESTILO PARA IMPRESIÓN: Oculta botones y el campo de entrada al imprimir */
+        @media print {
+            #btn-imprimir, .btn-volver, #seccion-nombre {
+                display: none !important;
+            }
+            #factura-container { width: 100%; border: none; }
+        }
+    </style>
 </head>
 <body>
     <div id="factura-container">
         <div id="factura">
             <h2>Factura</h2>
+
+            <!-- 1. Campo para escribir el nombre -->
+            <div id="seccion-nombre">
+                <label for="input-nombre"><strong>Nombre del Cliente:</strong></label><br>
+                <input type="text" id="input-nombre" placeholder="Ingrese su nombre completo" oninput="actualizarNombre()">
+            </div>
+
+            <!-- 2. Lugar donde se mostrará el nombre en el comprobante -->
+            <p><strong>Cliente:</strong> <span id="nombre-cliente">____________________</span></p>
             <p><strong>Fecha:</strong> <span id="fecha"></span></p>
+            
             <table>
                 <thead>
                     <tr>
@@ -25,23 +49,29 @@
             <h3>Total a pagar: <span id="total-pagar"></span></h3>
           
             <p id="mensaje-advertencia">
-    <strong>⚠ AVISO IMPORTANTE:</strong><br>
-     <strong>Para reclamar su pedido, debe presentar este documento junto con el código QR de confirmación de pago de Nequi, o directamente en el Pago de Nequi incluir los elementos comprados en la parte de Mensaje.</strong>
-</p>
+                <strong>⚠ AVISO IMPORTANTE:</strong><br>
+                <strong>Para reclamar su pedido, debe presentar este documento junto con el código QR de confirmación de pago de Nequi, o directamente en el Pago de Nequi incluir los elementos comprados en la parte de Mensaje.</strong>
+            </p>
 
- <div id="contenedor-pago">
-    <img src="qr-pago.jpg" alt="Código QR para pago" id="qr-pago">
-    <a href="https://clientes.nequi.com.co/recargas" target="_blank" id="boton-pago">
-        <img src="pseicon.jpg" alt="Pagar ahora por PSE" id="logo-pago">
-    </a>
-</div>
+            <div id="contenedor-pago">
+                <img src="qr-pago.jpg" alt="Código QR para pago" id="qr-pago">
+                <a href="https://clientes.nequi.com.co/recargas" target="_blank" id="boton-pago">
+                    <img src="pseicon.jpg" alt="Pagar ahora por PSE" id="logo-pago">
+                </a>
+            </div>
 
             <p><button onclick="imprimirFactura()" id="btn-imprimir">Imprimir Comprobante</button></p>
-            <button onclick="window.location.href='carritotiendabazar.html'">Volver al carrito</button>
+            <button class="btn-volver" onclick="window.location.href='carritotiendabazar.html'">Volver al carrito</button>
         </div>
     </div>
 
     <script>
+        // Función para que el nombre se escriba en la factura mientras el usuario teclea
+        function actualizarNombre() {
+            const nombreEscrito = document.getElementById("input-nombre").value;
+            document.getElementById("nombre-cliente").innerText = nombreEscrito || "____________________";
+        }
+
         function cargarFactura() {
             let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
             let detalleFactura = document.getElementById("detalle-factura");
@@ -66,6 +96,13 @@
         }
 
         function imprimirFactura() {
+            // Validación opcional: avisar si no han puesto el nombre
+            const nombre = document.getElementById("input-nombre").value;
+            if (nombre.trim() === "") {
+                if (!confirm("No has ingresado un nombre. ¿Quieres imprimir el comprobante de todas formas?")) {
+                    return;
+                }
+            }
             window.print();
         }
 
